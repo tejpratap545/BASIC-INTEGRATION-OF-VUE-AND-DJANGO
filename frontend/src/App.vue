@@ -1,14 +1,26 @@
 <template>
- <v-app>
+  <v-app>
+    <products />
 
- </v-app>
+  <addproduct/>
+  </v-app>
 </template>
+
 <script>
+import products from "./components/products";
+import addproduct from './components/addproduct'
+ 
 export default {
-  
-}
+  name: "App",
+
+  components: {
+    products,addproduct
+ 
+ 
+  },
+
+  data: () => ({
+    //
+  })
+};
 </script>
-<style>
- 
- 
-</style>

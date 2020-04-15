@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'restapp',
     'rest_framework',
+    'corsheaders',
 
 ]
 
@@ -50,6 +51,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -126,3 +131,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+  
+         'rest_framework.permissions.AllowAny',
+    ],
+   'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+    ]
+}
+
+
+
+ALLOWED_HOSTS=["*"]
+CORS_ORIGIN_ALLOW_ALL =True
+CORS_ALLOW_CREDENTIALS=True
+CSRF_TRUSTED_ORIGINS = [
+    "*",
+]
+CORES_ORIGIN_WHITELIST=[
+    'http://localhost:8080'
+]
