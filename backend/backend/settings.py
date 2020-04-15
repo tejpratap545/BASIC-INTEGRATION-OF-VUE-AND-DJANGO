@@ -145,28 +145,21 @@ REST_FRAMEWORK = {
 
 
 
-ALLOWED_HOSTS=["*"]
+ALLOWED_HOSTS=["127.0.0.1","http://localhost:8080/ "]
  
 CSRF_TRUSTED_ORIGINS = [
-    "*",
+    "http://localhost:8080/ ",
 ]
  
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3030',
+    'http://localhost:8080',
 ]
-CORS_ORIGIN_REGEX_WHITELIST = [
-    'http://localhost:3030',
-]
-CORS_ALLOW_HEADERS = (
-    'x-requested-with',
-    'content-type',
-    'accept',
-    'origin',
-    'authorization',
-    'x-csrftoken'
-)
+ 
+from corsheaders.defaults import default_headers
+
+CORS_ALLOW_HEADERS = list(default_headers)
 CORS_ALLOW_METHODS = (
     'GET',
     'POST',

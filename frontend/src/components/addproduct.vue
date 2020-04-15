@@ -11,7 +11,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-import querystring from "querystring";
+ 
 
 export default {
   data() {
@@ -24,7 +24,7 @@ export default {
     ...mapActions(["addProducts"]),
     onSubmit() {
       this.addProducts(
-        querystring.stringify({ title: this.title, price: this.price })
+       { title: this.title, price: this.price }
       );
       this.title = "";
       this.price = "";
