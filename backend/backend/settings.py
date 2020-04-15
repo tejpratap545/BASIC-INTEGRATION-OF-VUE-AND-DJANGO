@@ -146,11 +146,33 @@ REST_FRAMEWORK = {
 
 
 ALLOWED_HOSTS=["*"]
-CORS_ORIGIN_ALLOW_ALL =True
-CORS_ALLOW_CREDENTIALS=True
+ 
 CSRF_TRUSTED_ORIGINS = [
     "*",
 ]
-CORES_ORIGIN_WHITELIST=[
-    'http://localhost:8080'
+ 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3030',
 ]
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3030',
+]
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken'
+)
+CORS_ALLOW_METHODS = (
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+)
+CSRF_COOKIE_NAME = "csrftoken"

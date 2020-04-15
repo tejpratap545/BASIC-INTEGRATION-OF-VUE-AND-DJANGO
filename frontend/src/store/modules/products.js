@@ -1,6 +1,7 @@
 import axios from "axios";
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
+axios.defaults.withCredentials = true;
 import Cookies from "js-cookie";
 const state = {
   products: []
@@ -22,7 +23,7 @@ const actions = {
     console.log("product is ", product);
     const csrftoken = Cookies.get("csrftoken");
     const headers = {
-      X_CSRFTOKEN: csrftoken
+      X_CSRFTOKEN: csrftoken, 'Access-Control-Allow-Origin': '*',
     };
     const responce = await axios.post(
       "http://127.0.0.1:8000/api/productsdetail/",
@@ -32,7 +33,8 @@ const actions = {
     commit("addProducts", responce);
   },
   async deleteProduct({ commit }, id) {
-    await axios.delete("http://127.0.0.1:8000/api/productsdetail/${id}");
+      console.log(id)
+    await axios.delete("http://127.0.0.1:8000/api/productsdetail/"+id);
     commit("deleteProduct", id);
   }
 };
