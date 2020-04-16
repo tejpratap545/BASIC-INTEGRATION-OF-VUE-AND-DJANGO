@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'restapp',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken'
 
 ]
 
@@ -134,9 +135,8 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-  
-         'rest_framework.permissions.AllowAny',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  
     ],
    'DEFAULT_PARSER_CLASSES': [
         'rest_framework.parsers.JSONParser',
@@ -145,7 +145,7 @@ REST_FRAMEWORK = {
 
 
 
-ALLOWED_HOSTS=["127.0.0.1","http://localhost:8080/ "]
+ALLOWED_HOSTS=["127.0.0.1","localhost"]
  
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080/ ",
@@ -158,7 +158,7 @@ CORS_ORIGIN_WHITELIST = [
 ]
  
 from corsheaders.defaults import default_headers
-
+import  datetime
 CORS_ALLOW_HEADERS = list(default_headers)
 CORS_ALLOW_METHODS = (
     'GET',
@@ -169,3 +169,8 @@ CORS_ALLOW_METHODS = (
     'OPTIONS'
 )
 CSRF_COOKIE_NAME = "csrftoken"
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=7),
+}
