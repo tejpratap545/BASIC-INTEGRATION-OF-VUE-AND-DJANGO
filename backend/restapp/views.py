@@ -18,8 +18,8 @@ class ProductDetail(mixins.ListModelMixin,
                   mixins.UpdateModelMixin,
                   mixins.DestroyModelMixin,
                   generics.GenericAPIView):
-    authentication_class = (JSONWebTokenAuthentication,) 
-    permission_classes = (IsAuthenticated,)  
+    # authentication_class = (JSONWebTokenAuthentication,) 
+    # permission_classes = (IsAuthenticated,)  
     queryset=products.objects.all()
     serializer_class=productSerializers
     lookup_field = 'id'

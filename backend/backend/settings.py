@@ -147,28 +147,15 @@ REST_FRAMEWORK = {
 
 ALLOWED_HOSTS=["127.0.0.1","localhost"]
  
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8080/ ",
-]
- 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080',
 ]
  
-from corsheaders.defaults import default_headers
+ 
 import  datetime
-CORS_ALLOW_HEADERS = list(default_headers)
-CORS_ALLOW_METHODS = (
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS'
-)
-CSRF_COOKIE_NAME = "csrftoken"
+ 
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),

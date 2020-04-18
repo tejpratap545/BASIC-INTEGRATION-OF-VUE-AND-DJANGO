@@ -6,6 +6,11 @@
         <input v-model="price" type="text" placeholder="Add price " />
         <input type="submit" value="Submit" />
       </form>
+       <!-- <form @submit.prevent="onLogin">
+        <input v-model="username" type="text" placeholder="username " />
+        <input v-model="password " type="text" placeholder="password  " />
+        <input type="submit" value="Submit" />
+      </form> -->
     </div>
   </v-app>
 </template>
@@ -17,18 +22,21 @@ export default {
   data() {
     return {
       title: "",
-      price: ""
+      price: "",
+      username: "",
+      password: ""
     };
   },
   methods: {
-    ...mapActions(["addProducts"]),
+    ...mapActions(["addProducts",]),
     onSubmit() {
       this.addProducts(
        { title: this.title, price: this.price }
       );
       this.title = "";
       this.price = "";
-    }
+    },
+    
   }
 };
 </script>
